@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@700&family=Open+Sans&family=Outfit:wght@400;700&family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
+    rel="stylesheet">
+  <title>Frontend Mentor | Age calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    body {
+      background-color: hsl(0, 0%, 94%);
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: hsl(0, 0%, 100%);
+      padding: 60px;
+      max-width: 1440px;
+      border-radius: 10px 10px 100px 10px
+    }
+
+    .section-middle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .inputs {
+      display: flex;
+      margin-bottom: 15px;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      width: 120px;
+      margin-right: 40px;
+    }
+
+    .input-group label {
+      font-size: 12px;
+      margin-bottom: 12px;
+      color: hsl(0, 1%, 44%);
+    }
+
+    input {
+      padding: 10px;
+      font-size: 28px;
+      font-weight: bold;
+      width: 80px;
+      border: 1px solid gray;
+      border-radius: 10px
+    }
+
+    .result {
+      width: 320px;
+      font-size: 10px;
+      font-style: italic;
+      margin-top: 10px;
+    }
+
+    .result div {
+      width: 400px;
+      font-size: 60px;
+      font-style: italic;
+      font-weight: bolder;
+      margin-top: 10px;
+    }
+
+    svg {
+      background-color: hsl(259, 100%, 65%);
+      border-radius: 50%;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .value {
+      color: hsl(259, 100%, 65%);
+    }
+
+    .input-group div {
+      color: red;
+      font-size: 14px;
+      width: 200px;
+    }
+
+    /* Mobil görünüm */
+
+    @media (max-width : 800px) {
+      .container {
+        width: 350px;
+        display: flex;
+        padding-left: 85px;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+      }
+
+      .section-middle {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-right: 20px;
+      }
+
+      .section-top {
+        margin-bottom: 60px;
+      }
+
+      .inputs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        width: 80px;
+      }
+
+      .input-group label {
+        margin-bottom: 5px;
+        font-size: 12px;
+      }
+
+      input {
+        padding: 8px;
+        font-size: 28px;
+        font-weight: bold;
+        width: 80px;
+        border: 1px solid gray;
+        border-radius: 10px
+      }
+
+      .section-bottom {
+        margin-top: 70px;
+        /* padding-left: 10px; */
+      }
+
+      .result {
+        width: 320px;
+        font-size: 80px;
+        font-style: italic;
+        font-weight: bolder;
+        line-height: 80px;
+      }
+
+      svg {
+        position: absolute;
+        background-color: hsl(259, 100%, 65%);
+        border-radius: 50%;
+        padding: 10px;
+        width: 65px;
+        cursor: pointer;
+      }
+
+      .input-group div {
+        color: red;
+        font-size: 14px;
+        width: 100px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="section-top">
+      <div class="inputs">
+        <div class="input-group">
+          <label for="">DAY</label>
+          <input class="day" type="text" placeholder="DD">
+          <div class="day-error"></div>
+        </div>
+        <div class="input-group">
+          <label for="">MONTH</label>
+          <input class="month" type="text" placeholder="MM">
+          <div class="month-error"></div>
+        </div>
+        <div class="input-group">
+          <label for="">YEAR</label>
+          <input class="year" type="text" placeholder="YYYY">
+          <div class="year-error"></div>
+        </div>
+      </div>
+    </div>
+    <div class="section-middle">
+      <hr width="500px">
+      <svg class="button" xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44">
+        <g fill="none" stroke="#FFF" stroke-width="2">
+          <path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44" />
+        </g>
+      </svg>
+    </div>
+    <div class="section-bottom">
+      <div class="result">
+        <div class="years"><span id="years" class="value"></span> years</div>
+        <div class="months"><span id="months" class="value"></span> months</div>
+        <div class="days"><span id="days" class="value"></span> days</div>
+      </div>
+    </div>
+
+
+  </div>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
